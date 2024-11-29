@@ -206,7 +206,7 @@ Transform:
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
   m_LocalRotation: {x: 0.53729963, y: 0, z: 0, w: 0.8433915}
-  m_LocalPosition: {x: 0, y: 5.35, z: -4.03}
+  m_LocalPosition: {x: 0, y: 3.5, z: -1.12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1029,7 +1029,7 @@ Transform:
   m_GameObject: {fileID: 1441386122}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.3386, y: 0.009, z: -1.2494}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1048,7 +1048,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53951b060b0663a43acb38c899b6eebe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 5
+  walkSpeed: 1.5
+  runSpeed: 3
   aim: {fileID: 1463122186}
   aimLayerMask:
     serializedVersion: 2
