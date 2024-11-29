@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    private Player player;
+
     private PlayerControlls controlls;
     private CharacterController characterController;
     private Animator animator;
@@ -25,17 +27,16 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 moveInput;
     private Vector2 aimInput;
 
-
-    private void Awake()
-    {
-        AssignInputEvents();
-    }
     private void Start()
     {
+        player = GetComponent<Player>();
+
         characterController = GetComponent<CharacterController>();
         animator = GetComponentInChildren<Animator>();
 
         speed = walkSpeed;
+
+        AssignInputEvents();
     }
 
     private void Update()
@@ -43,11 +44,6 @@ public class PlayerMovement : MonoBehaviour
         ApplyMovement();
         AimTowardsMouse();
         AnimatorControllers();
-    }
-
-    private void Shoot()
-    {
-        animator.SetTrigger("Fire");
     }
 
     private void AnimatorControllers()
@@ -100,12 +96,9 @@ public class PlayerMovement : MonoBehaviour
             verticalVelocity = -.5f;
     }
 
-    #region New Input System
     private void AssignInputEvents()
     {
-        controlls = new PlayerControlls();
-
-        controlls.Charactor.Fire.performed += context => Shoot();
+        controlls = player.controlls;
 
         controlls.Charactor.Movement.performed += context => moveInput = context.ReadValue<Vector2>();
         controlls.Charactor.Movement.canceled += context => moveInput = Vector2.zero;
@@ -125,15 +118,4 @@ public class PlayerMovement : MonoBehaviour
             isRunning = false;
         };
     }
-
-    private void OnEnable()
-    {
-        controlls.Enable();
-    }
-
-    private void OnDisable()
-    {
-        controlls.Disable();
-    }
-    #endregion
 }
